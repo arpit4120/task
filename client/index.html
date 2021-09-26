@@ -1,0 +1,29 @@
+<div class="box" style="font-size: 8vh; color: aqua;text-align: center;font-weight: bold;">
+  i will set up sockets on this page
+</div>
+<button onclick="func()">cki</button>
+<button onclick="login()">admin login</button>
+<button onclick="login1()">branch login</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+  integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=" crossorigin="anonymous"></script>
+<script>
+  const socket = io.connect('http://localhost:3001/');
+  socket.on('news', (data) => {
+    console.log(data);
+  });
+  function login() {
+    socket.emit('admin_login', { "access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjozNiwiZW1haWwiOiJDTkB5b3BtYWlsLmNvbSIsInVzZXJUeXBlIjowLCJlbnRlcnByaWNlUmVmZXJlbmNlSWQiOiJjMDM2NzA1NmZjNjc5YTM3MGI1YjQ1MzEyOGMwOWYyMCIsImlhdCI6MTU5MzY5NTUxMiwiZXhwIjoxNTk0MzAwMzEyfQ.5x5UMZfPXfiQctKch9ImDuHieDo_kDpsKVZU1XXl7Yg" });
+  }
+  function login1() {
+    socket.emit('branch_login', { "access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicmFuY2hJZCI6NCwiZW1haWwiOiJ0ZXN0aW5nc3RvcmVuYW1lMjEyQHlvcG1haWwuY29tIiwidXNlclR5cGUiOjEsImVudGVycHJpY2VSZWZlcmVuY2VJZCI6ImMwMzY3MDU2ZmM2NzlhMzcwYjViNDUzMTI4YzA5ZjIwIiwiaWF0IjoxNTkzNzA4NDYwLCJleHAiOjE1OTQzMTMyNjB9.X7pmKVpoXKWYhHOuWFZ2fTcnZnHIxuqFH2s1DTGjQJs" });
+  }
+  socket.on('connectToRoom',(data)=>{
+    console.log(data);
+  })
+  socket.on('create_grocery_booking',(data)=>{
+    console.log(data);
+  })
+  socket.on('cancel_grocery_booking',(data)=>{
+    console.log(data);
+  })
+</script>
